@@ -9,8 +9,16 @@ namespace Services.Services
         public Stream GetCurrencyStream()
         {
             WebRequest request = WebRequest.Create("https://www.cbr-xml-daily.ru/daily_json.js");
-            WebResponse response = request.GetResponse();
-            return response.GetResponseStream();
+
+            try
+            {
+                WebResponse response = request.GetResponse();
+                return response.GetResponseStream();
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
