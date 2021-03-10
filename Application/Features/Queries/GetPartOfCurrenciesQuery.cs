@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using MediatR;
+using Model.Behaviour;
 using Model.Entities;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace Application.Features.Queries
                 }
                 //Первый индекс нулевой, следовательно начинаем с нулевой страницы
                 return response.Valute.Select(value => value.Value).ToList()
-                    .GetRange((request.Page - 1) * request.Count, request.Count);
+                    .GetPageEntities(request.Page - 1, request.Count);
             }
         }
     }
