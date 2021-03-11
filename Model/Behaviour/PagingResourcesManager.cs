@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model.Behaviour
 {
-    public static class PagginationCreator
+    public static class PagingResourcesManager
     {
         public static List<Currency> GetPageEntities(this List<Currency> source, int pageNumber, int pageSize)
         {

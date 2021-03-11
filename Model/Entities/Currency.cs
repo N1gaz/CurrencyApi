@@ -5,7 +5,7 @@ namespace Model.Entities
     public class Currency
     {
         [JsonProperty("ID")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("NumCode")]
         public int NumCode { get; set; }

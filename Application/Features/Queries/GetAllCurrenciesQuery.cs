@@ -14,18 +14,18 @@ namespace Application.Features.Queries
     {
         public class GetAllCurrenciesQueryHandler : IRequestHandler<GetAllCurrenciesQuery, IEnumerable<Currency>>
         {
-            private readonly Stream responseStream;
+            private readonly Stream _responseStream;
 
             public GetAllCurrenciesQueryHandler(ICurrencyValues values)
             {
-                responseStream = values.GetCurrencyStream();
+                _responseStream = values.GetCurrencyStream();
             }
 
             public async Task<IEnumerable<Currency>> Handle(GetAllCurrenciesQuery request, CancellationToken cancellationToken)
             {
                 Response response;
 
-                using (StreamReader reader = new StreamReader(responseStream))
+                using (StreamReader reader = new StreamReader(_responseStream))
                 {
                     response = JsonConvert.DeserializeObject<Response>(await reader.ReadToEndAsync());
                 }

@@ -15,7 +15,7 @@ namespace Model.Entities
         public DateTimeOffset PreviousDate { get; set; }
 
         [JsonProperty("PreviousURL")]
-        public string PreviousURL { get; set; }
+        public string PreviousUrl { get; set; }
 
         [JsonProperty("Timestamp")]
         public DateTimeOffset Timestamp { get; set; }

@@ -18,18 +18,18 @@ namespace Application.Features.Queries
 
         public class GetPartOfCurrenciesQueryHandler : IRequestHandler<GetPartOfCurrenciesQuery, IEnumerable<Currency>>
         {
-            private readonly Stream responseStream;
+            private readonly Stream _responseStream;
 
             public GetPartOfCurrenciesQueryHandler(ICurrencyValues values)
             {
-                responseStream = values.GetCurrencyStream();
+                _responseStream = values.GetCurrencyStream();
             }
 
             public async Task<IEnumerable<Currency>> Handle(GetPartOfCurrenciesQuery request, CancellationToken cancellationToken)
             {
                 Response response;
 
-                using (StreamReader reader = new StreamReader(responseStream))
+                using (StreamReader reader = new StreamReader(_responseStream))
                 {
                     response = JsonConvert.DeserializeObject<Response>(await reader.ReadToEndAsync());
                 }

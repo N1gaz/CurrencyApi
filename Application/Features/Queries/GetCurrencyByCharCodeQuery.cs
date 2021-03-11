@@ -15,18 +15,18 @@ namespace Application.Features.Queries
 
         public class GetCurrencyByCharNumQueryHandler: IRequestHandler<GetCurrencyByCharCodeQuery, Currency>
         {
-            private readonly Stream responseStream;
+            private readonly Stream _responseStream;
 
             public GetCurrencyByCharNumQueryHandler(ICurrencyValues values)
             {
-                responseStream = values.GetCurrencyStream();
+                _responseStream = values.GetCurrencyStream();
             }
 
             public async Task<Currency> Handle(GetCurrencyByCharCodeQuery request, CancellationToken cancellationToken)
             {
                 Response response;
 
-                using (StreamReader reader = new StreamReader(responseStream))
+                using (StreamReader reader = new StreamReader(_responseStream))
                 {
                     response = JsonConvert.DeserializeObject<Response>(await reader.ReadToEndAsync());
                 }
